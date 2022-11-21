@@ -34,19 +34,47 @@
 Для реализации основного меню можно использовать пример ниже или написать свой
 """
 
+bill = 0
+purchases = []
+
+
+def incomeBill():
+    income = float(input('Введите сумму пополнения: '))
+    global bill
+    bill += income
+
+
+def buy():
+    price = float(input('Введите сумму покупки: '))
+    global bill
+    if price > bill:
+        print('Не хватает денег на покупку')
+        return
+    name = input('Введите название покупки: ')
+    bill -= price
+    purchases.append({'name': name, 'price': price})
+
+
+def printHistoryPurchases():
+    global purchases
+    for purchase in purchases:
+        print(f'{purchase["name"]} - {purchase["price"]}')
+
+
 while True:
+    print('___________________')
     print('1. пополнение счета')
     print('2. покупка')
     print('3. история покупок')
     print('4. выход')
 
-    choice = input('Выберите пункт меню')
+    choice = input(f'На счету: {bill} \nВыберите пункт меню: ')
     if choice == '1':
-        pass
+        incomeBill()
     elif choice == '2':
-        pass
+        buy()
     elif choice == '3':
-        pass
+        printHistoryPurchases()
     elif choice == '4':
         break
     else:
