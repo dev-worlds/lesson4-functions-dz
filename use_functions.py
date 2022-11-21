@@ -39,14 +39,16 @@ purchases = []
 
 
 def incomeBill():
-    income = float(input('Введите сумму пополнения: '))
     global bill
+
+    income = float(input('Введите сумму пополнения: '))
     bill += income
 
 
 def buy():
-    price = float(input('Введите сумму покупки: '))
     global bill
+
+    price = float(input('Введите сумму покупки: '))
     if price > bill:
         print('Не хватает денег на покупку')
         return
@@ -57,6 +59,7 @@ def buy():
 
 def printHistoryPurchases():
     global purchases
+
     for purchase in purchases:
         print(f'{purchase["name"]} - {purchase["price"]}')
 
